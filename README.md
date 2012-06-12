@@ -4,6 +4,13 @@ A Redis automatic failover mechanism
 
 # Usage
 
+Installation is a simple
+```shell
+zipp@redis0:~/redis_failover$ npm install
+```
+
+And usage, for now, is also easy
+
 ```shell
 zipp@redis0:~/redis_failover$ node index.js -n 192.168.0.2:6379,192.168.0.3:6379,...
 ```
