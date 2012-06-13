@@ -3,13 +3,13 @@
   "name": "redis_failover",
   "description": "An automatic failover.. thing.. for Redis. Uses Zookeeper and is based on the work of ryanlecompte on Github.",
   "version": "0.0.0",
+  "bin": "./bin/redis_failover.js",
   "repository": {
     "url": ""
   },
   "dependencies": {
     "redis": "~0.7.2",
-    "optimist": "~0.3.4",
-    "jquery": "~1.7.2"
+    "optimist": "~0.3.4"
   },
   "devDependencies": {},
   "optionalDependencies": {},
