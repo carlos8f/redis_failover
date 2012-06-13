@@ -1,4 +1,15 @@
-var argv = require('optimist').usage('Usage: $0 [OPTIONS]')
+// Module deps.
+var optimist = require('optimist'),
+    redis = require('redis'),
+    jquery = require('jquery'),
+    RedisNode = require('./lib/redisnode').RedisNode;
+    
+var DEFAULT_ZNODE_PATH = '/redis_failover_nodes';
+var options = {};
+    
+// Setup optimist.
+var argv = optimist
+    .usage('Usage: $0 [OPTIONS]')
     .alias('n', 'nodes')
     .describe('n', 'Comma-separated redis host:port pairs')
     .alias('z', 'zkservers')
@@ -7,22 +18,7 @@ var argv = require('optimist').usage('Usage: $0 [OPTIONS]')
     .describe('max-failures', 'Maximum number of failures before manager marks node as unavailable')
     .alias('h', 'help')
     .describe('h', 'Display all options')
-    .argv,
-    redis = require('redis'),
-    jquery = require('jquery'),
-    RedisNode = require('./lib/redisnode').RedisNode;
-
-if (argv.h) {
-  require('optimist').showHelp();
-}
-
-var DEFAULT_ZNODE_PATH = '/redis_failover_nodes';
-var options = {};
-
-// Options processing
-if (argv.znodepath) {
-  options.znode_path = argv.znodepath;
-}
+    .argv;
 
 options.nodes = new Array;
 argv.n.split(',').forEach(function (val) {
