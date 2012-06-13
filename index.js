@@ -3,14 +3,15 @@ var optimist = require('optimist'),
     redis = require('redis'),
     jquery = require('jquery'),
     RedisNode = require('./lib/redisnode').RedisNode;
-    
+
 var DEFAULT_ZNODE_PATH = '/redis_failover_nodes';
 var options = {};
-    
+
 // Setup optimist.
 var argv = optimist
     .usage('Usage: $0 [OPTIONS]')
     .alias('n', 'nodes')
+    .demand('n')
     .describe('n', 'Comma-separated redis host:port pairs')
     .alias('z', 'zkservers')
     .describe('z', 'Comma-separated ZooKeeper host:port pairs')
