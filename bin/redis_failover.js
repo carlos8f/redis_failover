@@ -3,8 +3,6 @@
 // Module deps.
 var optimist = require('optimist')
   , NodeManager = require('../lib/node-manager')
-  ;
-var DEFAULT_ZNODE_PATH = '/redis_failover_nodes'
   , options = {nodes: []}
   ;
 
@@ -17,6 +15,7 @@ var argv = optimist
     .alias('z', 'zkservers')
     .describe('z', 'Comma-separated ZooKeeper host:port pairs')
     .describe('znodepath', 'Znode path override for storing Redis server list')
+    .default('znodepath', '/redis_failover_nodes')
     .describe('max-failures', 'Maximum number of failures before manager marks node as unavailable')
     .alias('h', 'help')
     .describe('h', 'Display all options')
